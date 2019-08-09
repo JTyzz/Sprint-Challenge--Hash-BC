@@ -22,9 +22,9 @@ def proof_of_work(last_proof):
     start = timer()
 
     print("Searching for next proof")
-    proof = 0
+    proof = 9000000
     while valid_proof(last_proof, proof) is False:
-        proof += 1
+        proof += 10000
     print("Proof found: " + str(proof) + " in " + str(timer() - start))
     return proof
 
@@ -32,7 +32,7 @@ def proof_of_work(last_proof):
 def valid_proof(last_hash, proof):
     """
     Validates the Proof:  Multi-ouroborus:  Do the last six characters of
-    the last hash match the first six characters of the proof?
+    the last hash match the first six charapy minercters of the proof?
 
     IE:  last_hash: ...999123456, new hash 123456888...
     """
@@ -40,7 +40,7 @@ def valid_proof(last_hash, proof):
     last_hash = str(last_hash)
     guess_proof = str(proof).encode()
     hashed_proof = hashlib.sha256(guess_proof).hexdigest()
-    
+
     return last_hash[-6:] == hashed_proof[:6]
 
 
