@@ -11,22 +11,23 @@ def get_indices_of_item_weights(weights, length, limit):
     """
     YOUR CODE HERE
     """
-    arr = []
+    #arr = []
 
-    for i in range(len(weights)):
-        hash_table_insert(ht, weights[i], i)
+    #for i in range(len(weights)):
+    #    hash_table_insert(ht, weights[i], i)
+    #david notes
+    # dont need to fill out entire index
+    # handle duplicate entries for ex1test2
 
-    for i in weights:
-        search = limit - i
-        retrieve_ht = hash_table_retrieve(ht, search)
+    for i in range(length):
 
-        if retrieve_ht:
-            arr.append(retrieve_ht)
-            hash_table_remove(ht, search)
-            arr.append(hash_table_retrieve(ht, i))
-            return arr
+        retrieve_ht = hash_table_retrieve(ht, weights[i])
+        if retrieve_ht is not None and retrieve_ht is not i:
+            return (i, retrieve_ht)
 
-    return None
+        else:
+            hash_table_insert(ht, limit - weights[i], i)
+
 
 
 def print_answer(answer):
