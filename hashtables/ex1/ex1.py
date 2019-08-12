@@ -8,12 +8,26 @@ from hashtables import (HashTable,
 
 def get_indices_of_item_weights(weights, length, limit):
     ht = HashTable(16)
-
     """
     YOUR CODE HERE
     """
+    #arr = []
 
-    return None
+    #for i in range(len(weights)):
+    #    hash_table_insert(ht, weights[i], i)
+    #david notes
+    # dont need to fill out entire index
+    # handle duplicate entries for ex1test2
+
+    for i in range(length):
+
+        retrieve_ht = hash_table_retrieve(ht, weights[i])
+        if retrieve_ht is not None and retrieve_ht is not i:
+            return (i, retrieve_ht)
+
+        else:
+            hash_table_insert(ht, limit - weights[i], i)
+
 
 
 def print_answer(answer):
